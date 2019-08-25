@@ -1,0 +1,12 @@
+syntax = "proto3";
+package catalogue;
+
+// Partitioned by UserUUID
+service Recycler<UserUUID> {
+  Delete(DelFavoriteRequest) returns (DelFavoriteResponse) {} // DEL_FAVORITE_ROOM, 20
+}
+
+// Partitioned by ShardKey
+service Navigator {
+  rpc SearchBusyFlats(BusySearchRequest) returns (BusySearchResponse) {} // SBUSYF, 13
+}
